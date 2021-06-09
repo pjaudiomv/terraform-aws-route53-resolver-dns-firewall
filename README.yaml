@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-example-module
+name: terraform-aws-route53-resolver-dns-firewall
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,7 +20,7 @@ copyrights:
     year: "2020"
 
 # Canonical GitHub repo
-github_repo: cloudposse/terraform-example-module
+github_repo: pjaudiomv/terraform-aws-route53-resolver-dns-firewall
 
 # Badges to display
 badges:
@@ -54,11 +54,13 @@ references:
   - name: "Terraform Version Pinning"
     description: "The required_version setting can be used to constrain which versions of the Terraform CLI can be used with your configuration"
     url: "https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version"
+  - name: "AWS Route 53 Resolver DNS Firewall Developer Guide"
+    description: "The developer guide for Route 53 Resolver DNS Firewall"
+    url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html"
 
 # Short description of this project
 description: |-
-  This is `terraform-example-module` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-  use when creating new repositories.
+  This module `terraform-aws-route53-resolver-dns-firewall` is used to configure the Route 53 Resolver DNS Firewall. It is setup in an allow list mode and blocks all domains not in the allow list..
 
 # Introduction to the project
 #introduction: |-
@@ -67,21 +69,25 @@ description: |-
 # How to use this module. Should be an easy example to copy and paste.
 usage: |-
   For a complete example, see [examples/complete](examples/complete).
-  
+
   For automated tests of the complete example using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest)
   (which tests and deploys the example on AWS), see [test](test).
 
   ```hcl
-  module "example" {
-    source = "https://github.com/cloudposse/terraform-example-module.git?ref=master"
-    example = "Hello world!"
+  module "dns_firewall" {
+    source = "https://github.com/pjaudiomv/terraform-aws-route53-resolver-dns-firewall.git?ref=master"
+
+    allowed_domains = var.allowed_domains
+    vpc_ids         = var.vpc_ids
+    recurse_cnames  = var.recurse_cnames
+    context         = module.this.context
   }
   ```
 
 # Example usage
 examples: |-
   Here is an example of using this module:
-  - [`examples/complete`](https://github.com/cloudposse/terraform-example-module/) - complete example of using this module
+  - [`examples/complete`](https://github.com/pjaudiomv/terraform-aws-route53-resolver-dns-firewall/) - complete example of using this module
 
 # How to get started quickly
 #quickstart: |-
