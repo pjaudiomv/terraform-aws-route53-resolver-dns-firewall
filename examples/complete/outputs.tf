@@ -1,14 +1,14 @@
 output "id" {
-  description = "ID of the created example"
-  value       = module.example.id
+  description = "ID of the created DNS firewall."
+  value       = module.dns_firewall.id
 }
 
-output "example" {
-  description = "Output \"example\" from example module"
-  value       = module.example.example
+output "rule_group_id" {
+  description = "The firewall rule group id."
+  value       = module.dns_firewall.firewall_rule_group_id
 }
 
-output "random" {
-  description = "Output \"random\" from example module"
-  value       = module.example.random
+output "allowed_domains" {
+  description = "The list of allowed domains added to allow rule."
+  value       = module.dns_firewall.allowed_domains
 }

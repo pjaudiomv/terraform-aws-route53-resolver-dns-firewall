@@ -2,14 +2,19 @@ terraform {
   required_version = ">= 0.13"
 
   required_providers {
-    # Update these to reflect the actual requirements of your module
-    local = {
-      source  = "hashicorp/local"
-      version = ">= 1.2"
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.38.0"
     }
-    random = {
-      source  = "hashicorp/random"
-      version = ">= 2.2"
+    external = {
+      source  = "hashicorp/external"
+      version = ">= 2.1.0"
     }
   }
 }
+
+
+//local = {
+//  source  = "hashicorp/local"
+//  version = ">= 1.2"
+//}
